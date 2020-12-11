@@ -69,7 +69,7 @@ function addItemToCart(itemName, itemPrice, itemImageSrc) {
         }
     }
     var cartRowContents = `
-        <div class="cart-item cart-column">
+        <div class="cart-item cart-column check-empty">
             <img class="cart-item-image" src="${itemImageSrc}">
             <span class="cart-item-name">${itemName}</span>
         </div>
@@ -119,6 +119,10 @@ function removeCartItem(event) {
 }
 
 function purchaseClicked(){
+    if(document.getElementsByClassName('check-empty').length < 1 ){
+        alert("You haven't choose any items!")
+        return
+    }
     alert('Thank You!')
     var cartItems = document.getElementsByClassName('cart-items')[0]
     while (cartItems.hasChildNodes()) {
